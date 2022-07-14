@@ -1,1 +1,14 @@
-<p>delete works!</p>
+<div style="width: 450px">
+    <h2 mat-dialog-title>User Form</h2>
+    <mat-dialog-content class="mat-typography">
+        <div>
+            Are you sure you want to delete <b>{{ user?.name }}</b>?
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>&nbsp;
+        <button (click)="onDeleteUserData()" mat-button [mat-dialog-close]="false" cdkFocusInitial>
+            Delete User Info
+        </button>
+    </mat-dialog-actions>
+</div>

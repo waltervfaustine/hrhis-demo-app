@@ -24,9 +24,9 @@
 			<td>{{ user?.website }}</td>
 			<td>{{ user?.company?.name }}</td>
 			<td>
-				<span (click)="onEditUser(user)" class="text-success">Edit</span> | 
-				<span (click)="onDeleteUser()" class="text-danger">Delete</span> | 
-				<span (click)="onViewMoreUserDetails()" class="text-info">View More</span> 
+				<span (click)="onEditUser(user)" class="text-success">Edit</span> |
+				<span (click)="onDeleteUser(user)" class="text-danger">Delete</span> |
+				<span (click)="onViewMoreUserDetails()" class="text-info">View More</span>
 			</td>
 		</tr>
 	</tbody>

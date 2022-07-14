@@ -4,6 +4,7 @@ import { User } from '../../models/user.model';
 import { AddFormComponent } from '../add-form/add-form.component';
 import * as _ from 'lodash';
 import { EditFormComponent } from '../edit-form/edit-form.component';
+import { DeleteComponent } from '../delete/delete.component';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -13,10 +14,11 @@ export class TableComponent implements OnInit {
   @Input() users: User[] | null = [];
   createUserDialog!: MatDialogRef<AddFormComponent>;
   editUserDialog!: MatDialogRef<EditFormComponent>;
+  deleteUserDialog!: MatDialogRef<DeleteComponent>;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onCreateUser() {
     this.createUserDialog = this.dialog.open(AddFormComponent, {
@@ -45,7 +47,19 @@ export class TableComponent implements OnInit {
       });
   }
 
-  onDeleteUser() {}
+  onDeleteUser(user: User) {
+    this.deleteUserDialog = this.dialog.open(DeleteComponent, {
+      disableClose: true,
+      data: { user },
+    });
+    this.deleteUserDialog
+      .afterClosed()
+      .subscribe((payload: { userResponse: User[] }) => {
+        if (payload && payload.userResponse && this.users) {
+          this.users = _.uniqBy([...payload.userResponse], 'id');
+        }
+      });
+  }
 
-  onViewMoreUserDetails() {}
+  onViewMoreUserDetails() { }
 }
