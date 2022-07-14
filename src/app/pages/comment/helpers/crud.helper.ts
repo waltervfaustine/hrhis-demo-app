@@ -7,36 +7,31 @@ export const addUserDataInDB = (user: User): Observable<User[]> => {
     return of([...users, user]);
 };
 
-export const updateUserDataInDB = (id: number, user: User): Observable<User[]> => {
+export const updateUserDataInDB = (
+    id: number,
+    user: User
+): Observable<User[]> => {
     const index = _.findIndex(users, (user: User) => {
         return user.id === id;
-    })
-    return of(users.splice(index, 1, user) as User[])
-}
+    });
+    return of(users.splice(index, 1, user) as User[]);
+};
 
 export const getOneUserDataFromDB = (id: number): Observable<User> => {
     const index = _.findIndex(users, (user: User) => {
         return user.id === id;
-    })
-    return of(users[index] as User)
-}
+    });
+    return of(users[index] as User);
+};
 
 export const getAllUsersDataFromDB = () => {
     return of(users);
-}
+};
 
 export const deleteUserDataFromDB = (id: number): Observable<User[]> => {
     const index = _.findIndex(users, (user: User) => {
         return user.id === id;
-    })
-    return of(users.splice(index, 1) as User[])
-}
-
-
-
-
-
-
-
-
-
+    });
+    users.splice(index, 1) as User[];
+    return of(users);
+};
