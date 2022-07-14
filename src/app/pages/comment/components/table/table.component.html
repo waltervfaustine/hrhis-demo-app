@@ -1,0 +1,33 @@
+<button (click)="onCreateUser()" class="btn btn-success">Add User +</button>
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">SN</th>
+			<th scope="col">Name</th>
+			<th scope="col">Username</th>
+			<th scope="col">Email</th>
+			<th scope="col">Phone</th>
+			<th scope="col">Address</th>
+			<th scope="col">Website</th>
+			<th scope="col">Company</th>
+			<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let user of users; let i = index">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>{{ user?.name }}</td>
+			<td>@{{ user?.username }}</td>
+			<td>{{ user?.email }}</td>
+			<td>{{ user?.phone }}</td>
+			<td>{{ user?.address?.city }}</td>
+			<td>{{ user?.website }}</td>
+			<td>{{ user?.company?.name }}</td>
+			<td>
+				<span (click)="onEditUser()" class="text-success">Edit</span> | 
+				<span (click)="onDeleteUser()" class="text-danger">Delete</span> | 
+				<span (click)="onViewMoreUserDetails()" class="text-info">View More</span> 
+			</td>
+		</tr>
+	</tbody>
+</table>
