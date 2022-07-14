@@ -1,1 +1,20 @@
-<p>edit-form works!</p>
+<div style="width: 450px;">
+    <h2 mat-dialog-title>User Form</h2>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="userEditForm">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input formControlName="name" type="text" class="form-control"
+                    placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Username</label>
+                <input formControlName="username" type="text" class="form-control" placeholder="Username">
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>&nbsp;
+        <button (click)="onEditFormData()" mat-button [mat-dialog-close]="false" cdkFocusInitial>Save Form</button>
+    </mat-dialog-actions>
+</div>
